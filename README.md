@@ -84,7 +84,7 @@ docker compose logs api
 - Swagger: http://localhost:3000/docs
 - PostgreSQL: `localhost:5433`
 
-O front e a API estao ligados pela rede `app-network`. O Nginx do front encaminha as requisicoes de `/api/tickets` para o servico `api`.
+O PostgreSQL e a API estão ligados pela rede `db-network`. O front e a API estão ligados pela rede `app-network`. Assim, o front não acessa o banco diretamente. O Nginx do front encaminha as requisições de `/api/tickets` para o serviço `api`.
 
 ## Banco PostgreSQL
 

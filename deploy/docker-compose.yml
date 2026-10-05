@@ -4,8 +4,10 @@ services:
     container_name: postgres
     ports:
       - "5433:5432"
-    env_file:
-      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-devops}
+      POSTGRES_USER: ${POSTGRES_USER:-devops}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devops_local}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -30,11 +32,12 @@ services:
     container_name: api-nestjs
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_PORT: "5432"
+      POSTGRES_DB: ${POSTGRES_DB:-devops}
+      POSTGRES_USER: ${POSTGRES_USER:-devops}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devops_local}
     depends_on:
       - postgres
     networks:
