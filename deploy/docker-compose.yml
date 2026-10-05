@@ -4,12 +4,27 @@ services:
     container_name: postgres
     ports:
       - "5433:5432"
-    environment:
-      POSTGRES_DB: "devops"
-      POSTGRES_USER: "devops"
-      POSTGRES_PASSWORD: "devops_local"
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - db-network
+
+  api:
+    build:
+      context: ../api
+      dockerfile: Dockerfile
+    container_name: api-nestjs
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+    depends_on:
+      - postgres
     networks:
       - db-network
 

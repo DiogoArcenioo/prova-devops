@@ -71,6 +71,12 @@ Verificar os containers:
 docker compose ps
 ```
 
+Ver os logs da API:
+
+```cmd
+docker compose logs api
+```
+
 ## Acessos
 
 - Front: http://localhost:8080
