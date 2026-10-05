@@ -15,6 +15,7 @@ O projeto é um sistema simples para listar e cadastrar chamados. Ele possui uma
 - [Requisitos](#requisitos)
 - [Como executar](#como-executar)
 - [Acessos](#acessos)
+- [Banco PostgreSQL](#banco-postgresql)
 - [Tabela tickets](#tabela-tickets)
 - [Endpoints CRUD](#endpoints-crud)
 - [Exemplos de resposta](#exemplos-de-resposta)
@@ -76,6 +77,28 @@ docker compose ps
 - API: http://localhost:3000/tickets
 - Swagger: http://localhost:3000/docs
 - PostgreSQL: `localhost:5433`
+
+## Banco PostgreSQL
+
+Para iniciar somente o PostgreSQL:
+
+```cmd
+docker compose up -d postgres
+```
+
+Para encerrar preservando os dados:
+
+```cmd
+docker compose down
+```
+
+Para encerrar e apagar também o volume do banco:
+
+```cmd
+docker compose down -v
+```
+
+O PostgreSQL pode ser acessado em `localhost:5433`. Os dados ficam armazenados no volume `postgres_data`.
 
 ## Tabela tickets
 
